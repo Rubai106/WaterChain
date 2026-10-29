@@ -1,0 +1,3 @@
+visit_id,date_sampled,district,source_name,transport_container,storage_container,boils_water
+20,2025-01-01,District A,Well A,Jerrycan,Pot,FALSE
+21,2025-01-02,District A,Well A,Bucket,Pot,TRUE

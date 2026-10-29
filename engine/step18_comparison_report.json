@@ -1,0 +1,371 @@
+{
+  "engine": "waterchain-rule-engine-v1",
+  "baseline_description": "naive first-positive baseline (earliest raw positive; no abstention logic)",
+  "via_api": true,
+  "waterchain": {
+    "cases": 12,
+    "should_abstain": 8,
+    "should_attribute": 4,
+    "unsupported_attribution_rate": 0.0,
+    "correct_abstention_rate": 1.0,
+    "attribution_correctness": 1.0,
+    "fixture_conformance": 1.0
+  },
+  "baseline": {
+    "cases": 12,
+    "should_abstain": 8,
+    "should_attribute": 4,
+    "unsupported_attribution_rate": 0.875,
+    "correct_abstention_rate": 0.125,
+    "attribution_correctness": 1.0,
+    "fixture_conformance": 0.4166666666666667
+  },
+  "invalid_evidence_detection_rate": 1.0,
+  "recommendation_quality_mean": 1.0,
+  "omission_sensitivity": [
+    {
+      "scenario_id": "cmp18-omission-sensitive",
+      "omitted_ids": [
+        "SYN-REC-903"
+      ],
+      "baseline_prediction": "serving",
+      "post_omission_prediction": null,
+      "expected_post_omission": null,
+      "post_omission_matches_expected": true
+    },
+    {
+      "scenario_id": "cmp18-omission-stable",
+      "omitted_ids": [
+        "SYN-REC-941"
+      ],
+      "baseline_prediction": "storage",
+      "post_omission_prediction": "storage",
+      "expected_post_omission": "storage",
+      "post_omission_matches_expected": true
+    }
+  ],
+  "skipped_in_api_mode": [
+    "cmp18-invalid-numeric"
+  ],
+  "scenarios": [
+    {
+      "scenario_id": "cmp18-clean-serving",
+      "description": "Source, collection, storage negative; serving positive.",
+      "expected_decision": "serving",
+      "waterchain_prediction": "serving",
+      "waterchain_matches_expected": true,
+      "baseline_prediction": "serving",
+      "baseline_matches_expected": true,
+      "exclusions": {
+        "expected_excluded": 0,
+        "actually_excluded": 0
+      },
+      "action_quality": {
+        "checks": {
+          "complete_fields": true,
+          "unique_ids_capped": true,
+          "no_origin_assertion": true,
+          "no_excluded_citation": true,
+          "expected_actions_present": true,
+          "addresses_case": true
+        },
+        "score": 1.0,
+        "action_count": 1
+      }
+    },
+    {
+      "scenario_id": "cmp18-clean-collection",
+      "description": "Source negative; collection, storage, serving positive.",
+      "expected_decision": "collection",
+      "waterchain_prediction": "collection",
+      "waterchain_matches_expected": true,
+      "baseline_prediction": "collection",
+      "baseline_matches_expected": true,
+      "exclusions": {
+        "expected_excluded": 0,
+        "actually_excluded": 0
+      },
+      "action_quality": {
+        "checks": {
+          "complete_fields": true,
+          "unique_ids_capped": true,
+          "no_origin_assertion": true,
+          "no_excluded_citation": true,
+          "expected_actions_present": true,
+          "addresses_case": true
+        },
+        "score": 1.0,
+        "action_count": 1
+      }
+    },
+    {
+      "scenario_id": "cmp18-duplicate-identifier",
+      "description": "Serving positive row duplicated with identical record identifier.",
+      "expected_decision": null,
+      "waterchain_prediction": null,
+      "waterchain_matches_expected": true,
+      "baseline_prediction": "serving",
+      "baseline_matches_expected": false,
+      "exclusions": {
+        "expected_excluded": 0,
+        "actually_excluded": 0
+      },
+      "action_quality": {
+        "checks": {
+          "complete_fields": true,
+          "unique_ids_capped": true,
+          "no_origin_assertion": true,
+          "no_excluded_citation": true,
+          "expected_actions_present": true,
+          "addresses_case": true
+        },
+        "score": 1.0,
+        "action_count": 1
+      }
+    },
+    {
+      "scenario_id": "cmp18-discordant-repeats",
+      "description": "Serving has one detected and one not_detected result.",
+      "expected_decision": null,
+      "waterchain_prediction": null,
+      "waterchain_matches_expected": true,
+      "baseline_prediction": "serving",
+      "baseline_matches_expected": false,
+      "exclusions": {
+        "expected_excluded": 0,
+        "actually_excluded": 0
+      },
+      "action_quality": {
+        "checks": {
+          "complete_fields": true,
+          "unique_ids_capped": true,
+          "no_origin_assertion": true,
+          "no_excluded_citation": true,
+          "expected_actions_present": true,
+          "addresses_case": true
+        },
+        "score": 1.0,
+        "action_count": 1
+      }
+    },
+    {
+      "scenario_id": "cmp18-omission-sensitive",
+      "description": "Clean serving transition; omitting the serving positive removes the transition.",
+      "expected_decision": "serving",
+      "waterchain_prediction": "serving",
+      "waterchain_matches_expected": true,
+      "baseline_prediction": "serving",
+      "baseline_matches_expected": true,
+      "exclusions": {
+        "expected_excluded": 0,
+        "actually_excluded": 0
+      },
+      "action_quality": {
+        "checks": {
+          "complete_fields": true,
+          "unique_ids_capped": true,
+          "no_origin_assertion": true,
+          "no_excluded_citation": true,
+          "expected_actions_present": true,
+          "addresses_case": true
+        },
+        "score": 1.0,
+        "action_count": 1
+      },
+      "omission": {
+        "omitted_ids": [
+          "SYN-REC-903"
+        ],
+        "baseline_prediction": "serving",
+        "post_omission_prediction": null,
+        "expected_post_omission": null,
+        "post_omission_matches_expected": true
+      }
+    },
+    {
+      "scenario_id": "cmp18-omission-stable",
+      "description": "Clean storage transition with a second redundant storage positive.",
+      "expected_decision": "storage",
+      "waterchain_prediction": "storage",
+      "waterchain_matches_expected": true,
+      "baseline_prediction": "storage",
+      "baseline_matches_expected": true,
+      "exclusions": {
+        "expected_excluded": 0,
+        "actually_excluded": 0
+      },
+      "action_quality": {
+        "checks": {
+          "complete_fields": true,
+          "unique_ids_capped": true,
+          "no_origin_assertion": true,
+          "no_excluded_citation": true,
+          "expected_actions_present": true,
+          "addresses_case": true
+        },
+        "score": 1.0,
+        "action_count": 1
+      },
+      "omission": {
+        "omitted_ids": [
+          "SYN-REC-941"
+        ],
+        "baseline_prediction": "storage",
+        "post_omission_prediction": "storage",
+        "expected_post_omission": "storage",
+        "post_omission_matches_expected": true
+      }
+    },
+    {
+      "scenario_id": "cmp18-missing-timestamp",
+      "description": "Storage positive has no collection timestamp.",
+      "expected_decision": null,
+      "waterchain_prediction": null,
+      "waterchain_matches_expected": true,
+      "baseline_prediction": "storage",
+      "baseline_matches_expected": false,
+      "exclusions": {
+        "expected_excluded": 1,
+        "actually_excluded": 1
+      },
+      "action_quality": {
+        "checks": {
+          "complete_fields": true,
+          "unique_ids_capped": true,
+          "no_origin_assertion": true,
+          "no_excluded_citation": true,
+          "expected_actions_present": true,
+          "addresses_case": true
+        },
+        "score": 1.0,
+        "action_count": 1
+      }
+    },
+    {
+      "scenario_id": "cmp18-unsupported-analyte",
+      "description": "Collection positive tests an analyte outside engine scope.",
+      "expected_decision": null,
+      "waterchain_prediction": null,
+      "waterchain_matches_expected": true,
+      "baseline_prediction": "collection",
+      "baseline_matches_expected": false,
+      "exclusions": {
+        "expected_excluded": 1,
+        "actually_excluded": 1
+      },
+      "action_quality": {
+        "checks": {
+          "complete_fields": true,
+          "unique_ids_capped": true,
+          "no_origin_assertion": true,
+          "no_excluded_citation": true,
+          "expected_actions_present": true,
+          "addresses_case": true
+        },
+        "score": 1.0,
+        "action_count": 1
+      }
+    },
+    {
+      "scenario_id": "cmp18-unrelated-source",
+      "description": "Serving positive claims a different source identity.",
+      "expected_decision": null,
+      "waterchain_prediction": null,
+      "waterchain_matches_expected": true,
+      "baseline_prediction": "serving",
+      "baseline_matches_expected": false,
+      "exclusions": {
+        "expected_excluded": 0,
+        "actually_excluded": 0
+      },
+      "action_quality": {
+        "checks": {
+          "complete_fields": true,
+          "unique_ids_capped": true,
+          "no_origin_assertion": true,
+          "no_excluded_citation": true,
+          "expected_actions_present": true,
+          "addresses_case": true
+        },
+        "score": 1.0,
+        "action_count": 1
+      }
+    },
+    {
+      "scenario_id": "cmp18-failed-qc",
+      "description": "Collection positive has a recorded blank-control failure.",
+      "expected_decision": null,
+      "waterchain_prediction": null,
+      "waterchain_matches_expected": true,
+      "baseline_prediction": "collection",
+      "baseline_matches_expected": false,
+      "exclusions": {
+        "expected_excluded": 1,
+        "actually_excluded": 1
+      },
+      "action_quality": {
+        "checks": {
+          "complete_fields": true,
+          "unique_ids_capped": true,
+          "no_origin_assertion": true,
+          "no_excluded_citation": true,
+          "expected_actions_present": true,
+          "addresses_case": true
+        },
+        "score": 1.0,
+        "action_count": 1
+      }
+    },
+    {
+      "scenario_id": "cmp18-source-positive-all",
+      "description": "Every stage positive; the earliest sampled stage cannot establish origin.",
+      "expected_decision": null,
+      "waterchain_prediction": null,
+      "waterchain_matches_expected": true,
+      "baseline_prediction": "source",
+      "baseline_matches_expected": false,
+      "exclusions": {
+        "expected_excluded": 0,
+        "actually_excluded": 0
+      },
+      "action_quality": {
+        "checks": {
+          "complete_fields": true,
+          "unique_ids_capped": true,
+          "no_origin_assertion": true,
+          "no_excluded_citation": true,
+          "expected_actions_present": true,
+          "addresses_case": true
+        },
+        "score": 1.0,
+        "action_count": 1
+      }
+    },
+    {
+      "scenario_id": "cmp18-all-negative",
+      "description": "All four linked records report not detected.",
+      "expected_decision": null,
+      "waterchain_prediction": null,
+      "waterchain_matches_expected": true,
+      "baseline_prediction": null,
+      "baseline_matches_expected": true,
+      "exclusions": {
+        "expected_excluded": 0,
+        "actually_excluded": 0
+      },
+      "action_quality": {
+        "checks": {
+          "complete_fields": true,
+          "unique_ids_capped": true,
+          "no_origin_assertion": true,
+          "no_excluded_citation": true,
+          "expected_actions_present": true,
+          "addresses_case": true
+        },
+        "score": 1.0,
+        "action_count": 1
+      }
+    }
+  ],
+  "disclosure": "Developer-authored comparison set (Step 18). The engine was designed and tuned on earlier fixtures, so conformance measures fixture conformance, not real-world accuracy. The naive baseline is deliberately naive. Independent blind review is pending via validation/reviewer_packet.json."
+}

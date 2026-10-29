@@ -1,0 +1,20 @@
+node_modules/
+.next/
+out/
+build/
+.env*
+*.log
+.DS_Store
+*.tsbuildinfo
+
+__pycache__/
+*.py[cod]
+# Keep facilitator-only answers private during blinded studies
+validation/pilot_study/**/FACILITATOR_ANSWER_KEY_NOT_FOR_PARTICIPANTS.md
+
+# Never commit raw reviewer or participant response data
+validation/completed_capture.csv
+validation/frozen_reviewer_response.csv
+validation/reviewer_responses*.csv
+validation/user_evaluation_data*.csv
+**/FACILITATOR_ANSWER_KEY_NOT_FOR_PARTICIPANTS.md

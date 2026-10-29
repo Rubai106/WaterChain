@@ -1,0 +1,8 @@
+record_code,sample_code,stage,collected_at,water_source_id,batch_id,analyte,result,numeric_value,unit,method,lab_name,positive_control,negative_control,blank_control,source_reference,notes
+B-11,B-11,source,2026-03-18T08:10:00Z,SRC-B42,LOT-B-26,e_coli_presence,not_detected,,,Membrane filtration,SYNTHETIC PILOT FIXTURE,pass,pass,pass,REF-B-11,Core journey source sample; synthetic only.
+B-12,B-12,collection,2026-03-18T09:10:00Z,SRC-B42,LOT-B-26,e_coli_presence,not_detected,,,Membrane filtration,SYNTHETIC PILOT FIXTURE,pass,pass,pass,REF-B-12,Core journey collection sample; synthetic only.
+B-13,B-13,storage,2026-03-18T10:10:00Z,SRC-B42,LOT-B-26,e_coli_presence,detected,,,Membrane filtration,SYNTHETIC PILOT FIXTURE,pass,pass,pass,REF-B-13,Core journey storage sample; synthetic only.
+B-14,B-14,serving,2026-03-18T11:10:00Z,SRC-B42,LOT-B-26,e_coli_presence,detected,,,Membrane filtration,SYNTHETIC PILOT FIXTURE,pass,pass,pass,REF-B-14,Core journey serving sample; synthetic only.
+B-15,B-15,serving,2026-03-18T12:10:00Z,SRC-Y18,LOT-Y-05,e_coli_presence,detected,,,Membrane filtration,SYNTHETIC PILOT FIXTURE,pass,pass,pass,REF-B-15,Field note identifies a different source and batch; do not assume this is the core journey.
+B-16,B-16,collection,2026-03-18T09:40:00Z,SRC-B42,LOT-B-26,e_coli_presence,detected,,,Membrane filtration,SYNTHETIC PILOT FIXTURE,pass,pass,fail,REF-B-16,Synthetic positive result with failed blank control.
+B-17,B-17,collection,2026-03-18T09:35:00Z,SRC-B77,LOT-B-72,e_coli_presence,detected,,,Membrane filtration,SYNTHETIC PILOT FIXTURE,pass,pass,pass,REF-B-17,Identity conflict: field sheet labels source SRC-B42; lab import says SRC-B77.

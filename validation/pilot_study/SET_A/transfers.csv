@@ -1,0 +1,5 @@
+transfer_id,from_entity_id,to_entity_id,transferred_at,transfer_reference,relationship_basis,notes
+TA-01,EA-SRC,EA-COL,2026-02-10T08:45:00Z,TRANSFER-FORM-A1,documented,Core chain transfer; evidence reference present.
+TA-02,EA-COL,EA-STO,2026-02-10T09:45:00Z,TRANSFER-FORM-A2,documented,Core chain transfer; evidence reference present.
+TA-03,EA-STO,EA-SRV,2026-02-10T10:45:00Z,TRANSFER-FORM-A3,documented,Core chain transfer; evidence reference present.
+TA-04,EA-ALT,EA-STO,2026-02-10T09:50:00Z,,self_reported,Side-path transfer mentioned in notes; no transfer record/reference supplied.

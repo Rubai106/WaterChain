@@ -1,0 +1,302 @@
+{
+  "title": "WaterChain controlled-scenario evaluation",
+  "evaluation_type": "synthetic deterministic fixtures only",
+  "not_real_world_performance": true,
+  "scenario_count": 15,
+  "methods": {
+    "WaterChain": {
+      "scenario_count": 15,
+      "expected_decision_accuracy": 1.0,
+      "attribution_coverage": 0.2,
+      "selective_accuracy_when_attributing": 1.0,
+      "correct_attribution_rate_on_identifiable_cases": 1.0,
+      "abstention_rate_on_cases_that_should_abstain": 1.0,
+      "unsupported_attribution_rate_on_cases_that_should_abstain": 0.0,
+      "incorrect_attribution_count": 0,
+      "abstention_count": 12,
+      "correct_abstention_count": 12,
+      "predicted_stage_count": 3,
+      "identifiable_case_count": 3,
+      "abstention_expected_case_count": 12
+    },
+    "Naive first-positive baseline": {
+      "scenario_count": 15,
+      "expected_decision_accuracy": 0.2667,
+      "attribution_coverage": 0.9333,
+      "selective_accuracy_when_attributing": 0.2143,
+      "correct_attribution_rate_on_identifiable_cases": 1.0,
+      "abstention_rate_on_cases_that_should_abstain": 0.0833,
+      "unsupported_attribution_rate_on_cases_that_should_abstain": 0.9167,
+      "incorrect_attribution_count": 11,
+      "abstention_count": 1,
+      "correct_abstention_count": 1,
+      "predicted_stage_count": 14,
+      "identifiable_case_count": 3,
+      "abstention_expected_case_count": 12
+    }
+  },
+  "scenario_results": [
+    {
+      "scenario_id": "clean_collection_transition",
+      "description": "Source is negative; the earliest positive is collection.",
+      "expected_decision": "collection",
+      "latent_ground_truth_entry_stage": "collection",
+      "identifiability": "identifiable_by_fixture_design",
+      "waterchain_prediction": "collection",
+      "baseline_prediction": "collection",
+      "waterchain_correct_expected_decision": true,
+      "baseline_correct_expected_decision": true,
+      "waterchain_confidence_label": "candidate transition only",
+      "waterchain_attribution_permitted": true,
+      "waterchain_finding_codes": []
+    },
+    {
+      "scenario_id": "clean_storage_transition",
+      "description": "Source and collection are negative; storage and serving are positive.",
+      "expected_decision": "storage",
+      "latent_ground_truth_entry_stage": "storage",
+      "identifiability": "identifiable_by_fixture_design",
+      "waterchain_prediction": "storage",
+      "baseline_prediction": "storage",
+      "waterchain_correct_expected_decision": true,
+      "baseline_correct_expected_decision": true,
+      "waterchain_confidence_label": "candidate transition only",
+      "waterchain_attribution_permitted": true,
+      "waterchain_finding_codes": []
+    },
+    {
+      "scenario_id": "clean_serving_transition",
+      "description": "Source, collection, and storage are negative; serving is positive.",
+      "expected_decision": "serving",
+      "latent_ground_truth_entry_stage": "serving",
+      "identifiability": "identifiable_by_fixture_design",
+      "waterchain_prediction": "serving",
+      "baseline_prediction": "serving",
+      "waterchain_correct_expected_decision": true,
+      "baseline_correct_expected_decision": true,
+      "waterchain_confidence_label": "candidate transition only",
+      "waterchain_attribution_permitted": true,
+      "waterchain_finding_codes": []
+    },
+    {
+      "scenario_id": "all_stages_negative",
+      "description": "All four eligible linked records report not detected.",
+      "expected_decision": null,
+      "latent_ground_truth_entry_stage": null,
+      "identifiability": "no_positive_transition_observed",
+      "waterchain_prediction": null,
+      "baseline_prediction": null,
+      "waterchain_correct_expected_decision": true,
+      "baseline_correct_expected_decision": true,
+      "waterchain_confidence_label": "insufficient evidence",
+      "waterchain_attribution_permitted": false,
+      "waterchain_finding_codes": []
+    },
+    {
+      "scenario_id": "source_positive_origin_unresolved",
+      "description": "The earliest sampled stage is positive; this alone does not establish when contamination began.",
+      "expected_decision": null,
+      "latent_ground_truth_entry_stage": "source",
+      "identifiability": "origin_not_identifiable_from_stage_sequence",
+      "waterchain_prediction": null,
+      "baseline_prediction": "source",
+      "waterchain_correct_expected_decision": true,
+      "baseline_correct_expected_decision": false,
+      "waterchain_confidence_label": "observed at source; origin timing unresolved",
+      "waterchain_attribution_permitted": false,
+      "waterchain_finding_codes": [
+        "transition_not_bracketed"
+      ]
+    },
+    {
+      "scenario_id": "missing_serving_batch",
+      "description": "Serving record has no batch identity; cross-stage continuity is not established.",
+      "expected_decision": null,
+      "latent_ground_truth_entry_stage": "storage",
+      "identifiability": "not_identifiable_due_to_missing_lineage",
+      "waterchain_prediction": null,
+      "baseline_prediction": "storage",
+      "waterchain_correct_expected_decision": true,
+      "baseline_correct_expected_decision": false,
+      "waterchain_confidence_label": "insufficient evidence",
+      "waterchain_attribution_permitted": false,
+      "waterchain_finding_codes": [
+        "record_excluded",
+        "no_shared_batch_link",
+        "lineage_unproven"
+      ]
+    },
+    {
+      "scenario_id": "mismatched_storage_batch",
+      "description": "The storage record refers to a different batch identifier.",
+      "expected_decision": null,
+      "latent_ground_truth_entry_stage": "storage",
+      "identifiability": "not_identifiable_due_to_conflicting_lineage",
+      "waterchain_prediction": null,
+      "baseline_prediction": "storage",
+      "waterchain_correct_expected_decision": true,
+      "baseline_correct_expected_decision": false,
+      "waterchain_confidence_label": "insufficient evidence",
+      "waterchain_attribution_permitted": false,
+      "waterchain_finding_codes": [
+        "no_shared_batch_link",
+        "lineage_unproven"
+      ]
+    },
+    {
+      "scenario_id": "conflicting_source_identity",
+      "description": "Records claim more than one source identity.",
+      "expected_decision": null,
+      "latent_ground_truth_entry_stage": "storage",
+      "identifiability": "not_identifiable_due_to_source_conflict",
+      "waterchain_prediction": null,
+      "baseline_prediction": "storage",
+      "waterchain_correct_expected_decision": true,
+      "baseline_correct_expected_decision": false,
+      "waterchain_confidence_label": "insufficient evidence",
+      "waterchain_attribution_permitted": false,
+      "waterchain_finding_codes": [
+        "source_identity_conflict",
+        "lineage_unproven"
+      ]
+    },
+    {
+      "scenario_id": "chronology_conflict",
+      "description": "Source timestamp comes after downstream stages.",
+      "expected_decision": null,
+      "latent_ground_truth_entry_stage": "storage",
+      "identifiability": "not_identifiable_due_to_timeline_conflict",
+      "waterchain_prediction": null,
+      "baseline_prediction": "storage",
+      "waterchain_correct_expected_decision": true,
+      "baseline_correct_expected_decision": false,
+      "waterchain_confidence_label": "insufficient evidence",
+      "waterchain_attribution_permitted": false,
+      "waterchain_finding_codes": [
+        "timeline_conflict"
+      ]
+    },
+    {
+      "scenario_id": "source_stage_missing",
+      "description": "No source-stage record was supplied.",
+      "expected_decision": null,
+      "latent_ground_truth_entry_stage": "storage",
+      "identifiability": "not_identifiable_due_to_missing_stage",
+      "waterchain_prediction": null,
+      "baseline_prediction": "storage",
+      "waterchain_correct_expected_decision": true,
+      "baseline_correct_expected_decision": false,
+      "waterchain_confidence_label": "insufficient evidence",
+      "waterchain_attribution_permitted": false,
+      "waterchain_finding_codes": [
+        "no_shared_batch_link",
+        "lineage_unproven"
+      ]
+    },
+    {
+      "scenario_id": "qc_failed_at_storage",
+      "description": "The storage positive has a recorded blank-control failure.",
+      "expected_decision": null,
+      "latent_ground_truth_entry_stage": "storage",
+      "identifiability": "not_identifiable_due_to_failed_qc",
+      "waterchain_prediction": null,
+      "baseline_prediction": "storage",
+      "waterchain_correct_expected_decision": true,
+      "baseline_correct_expected_decision": false,
+      "waterchain_confidence_label": "insufficient evidence",
+      "waterchain_attribution_permitted": false,
+      "waterchain_finding_codes": [
+        "record_excluded",
+        "no_shared_batch_link",
+        "lineage_unproven"
+      ]
+    },
+    {
+      "scenario_id": "storage_method_missing",
+      "description": "The storage positive lacks a recorded test method.",
+      "expected_decision": null,
+      "latent_ground_truth_entry_stage": "storage",
+      "identifiability": "not_identifiable_due_to_missing_method",
+      "waterchain_prediction": null,
+      "baseline_prediction": "storage",
+      "waterchain_correct_expected_decision": true,
+      "baseline_correct_expected_decision": false,
+      "waterchain_confidence_label": "insufficient evidence",
+      "waterchain_attribution_permitted": false,
+      "waterchain_finding_codes": [
+        "record_excluded",
+        "no_shared_batch_link",
+        "lineage_unproven"
+      ]
+    },
+    {
+      "scenario_id": "collection_not_tested",
+      "description": "The collection-stage record has no reportable result.",
+      "expected_decision": null,
+      "latent_ground_truth_entry_stage": "storage",
+      "identifiability": "not_identifiable_due_to_missing_stage_result",
+      "waterchain_prediction": null,
+      "baseline_prediction": "storage",
+      "waterchain_correct_expected_decision": true,
+      "baseline_correct_expected_decision": false,
+      "waterchain_confidence_label": "insufficient evidence",
+      "waterchain_attribution_permitted": false,
+      "waterchain_finding_codes": [
+        "record_excluded",
+        "no_shared_batch_link",
+        "lineage_unproven"
+      ]
+    },
+    {
+      "scenario_id": "unsupported_storage_analyte",
+      "description": "Storage record tests turbidity, outside this engine's E. coli pathway scope.",
+      "expected_decision": null,
+      "latent_ground_truth_entry_stage": "storage",
+      "identifiability": "not_identifiable_for_current_engine",
+      "waterchain_prediction": null,
+      "baseline_prediction": "storage",
+      "waterchain_correct_expected_decision": true,
+      "baseline_correct_expected_decision": false,
+      "waterchain_confidence_label": "insufficient evidence",
+      "waterchain_attribution_permitted": false,
+      "waterchain_finding_codes": [
+        "record_excluded",
+        "no_shared_batch_link",
+        "lineage_unproven"
+      ]
+    },
+    {
+      "scenario_id": "invalid_source_timestamp",
+      "description": "Source-stage timestamp cannot be parsed, so the source record is excluded.",
+      "expected_decision": null,
+      "latent_ground_truth_entry_stage": "collection",
+      "identifiability": "not_identifiable_due_to_invalid_timestamp",
+      "waterchain_prediction": null,
+      "baseline_prediction": "collection",
+      "waterchain_correct_expected_decision": true,
+      "baseline_correct_expected_decision": false,
+      "waterchain_confidence_label": "insufficient evidence",
+      "waterchain_attribution_permitted": false,
+      "waterchain_finding_codes": [
+        "record_excluded",
+        "no_shared_batch_link",
+        "lineage_unproven"
+      ]
+    }
+  ],
+  "metric_definitions": {
+    "expected_decision_accuracy": "Fraction whose predicted stage/abstention matches the scenario's predeclared expected decision. This is fixture conformance, not real-world causal accuracy.",
+    "attribution_coverage": "Fraction of scenarios where the method emits a stage attribution.",
+    "selective_accuracy_when_attributing": "Fraction of emitted attributions that match the predeclared expected decision stage.",
+    "correct_attribution_rate_on_identifiable_cases": "Fraction of scenarios designed with sufficient evidence for a stage decision that receive the expected stage.",
+    "abstention_rate_on_cases_that_should_abstain": "Fraction of scenarios declared non-identifiable/no-transition-observed for which the method emits no stage attribution.",
+    "unsupported_attribution_rate_on_cases_that_should_abstain": "Fraction of those non-identifiable/no-transition-observed scenarios where the method nonetheless emits a stage attribution."
+  },
+  "limitations": [
+    "Scenarios and values are synthetic test fixtures created in code, not household or laboratory observations.",
+    "Expected decisions are predeclared for deterministic software conformance; they are not independently adjudicated field ground truth.",
+    "The baseline is deliberately naive and is not a fair substitute for a validated operational method.",
+    "This harness tests only the current four-stage rule engine and its defined constraints.",
+    "No statistical significance, external validity, calibration, or real-world diagnostic efficacy can be inferred from these results."
+  ]
+}

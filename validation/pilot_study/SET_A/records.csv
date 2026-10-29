@@ -1,0 +1,8 @@
+record_code,sample_code,stage,collected_at,water_source_id,batch_id,analyte,result,numeric_value,unit,method,lab_name,positive_control,negative_control,blank_control,source_reference,notes
+A-01,A-01,source,2026-02-10T08:00:00Z,SRC-A17,LOT-A-14,e_coli_presence,not_detected,,,Membrane filtration,SYNTHETIC PILOT FIXTURE,pass,pass,pass,REF-A-01,Core journey source sample; synthetic only.
+A-02,A-02,collection,2026-02-10T09:00:00Z,SRC-A17,LOT-A-14,e_coli_presence,not_detected,,,Membrane filtration,SYNTHETIC PILOT FIXTURE,pass,pass,pass,REF-A-02,Core journey collection sample; synthetic only.
+A-03,A-03,storage,2026-02-10T10:00:00Z,SRC-A17,LOT-A-14,e_coli_presence,not_detected,,,Membrane filtration,SYNTHETIC PILOT FIXTURE,pass,pass,pass,REF-A-03,Core journey storage sample; synthetic only.
+A-04,A-04,serving,2026-02-10T11:00:00Z,SRC-A17,LOT-A-14,e_coli_presence,detected,,,Membrane filtration,SYNTHETIC PILOT FIXTURE,pass,pass,pass,REF-A-04,Core journey serving sample; synthetic only.
+A-05,A-05,serving,2026-02-10T12:00:00Z,SRC-X04,LOT-X-09,e_coli_presence,detected,,,Membrane filtration,SYNTHETIC PILOT FIXTURE,pass,pass,pass,REF-A-05,Field note identifies a different source and batch; do not assume this is the core journey.
+A-06,A-06,storage,2026-02-10T10:30:00Z,SRC-A17,LOT-A-14,e_coli_presence,detected,,,Membrane filtration,SYNTHETIC PILOT FIXTURE,pass,pass,fail,REF-A-06,Synthetic positive result with failed blank control.
+A-07,A-07,collection,2026-02-10T09:30:00Z,SRC-A91,LOT-A-92,e_coli_presence,detected,,,Membrane filtration,SYNTHETIC PILOT FIXTURE,pass,pass,pass,REF-A-07,Identity conflict: field sheet labels source SRC-A17; lab import says SRC-A91.

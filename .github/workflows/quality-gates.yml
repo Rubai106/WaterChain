@@ -1,0 +1,43 @@
+name: WaterChain quality gates
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  python-engine:
+    name: Python engine and synthetic validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile Python modules
+        run: python -m compileall -q engine
+      - name: Run all Python tests
+        run: python -m unittest discover -s engine -p 'test_*.py' -v
+      - name: Validate synthetic holdout suite
+        run: python engine/run_holdout_validation.py
+      - name: Regenerate controlled evaluation
+        run: python engine/evaluate.py
+      - name: Build reproducibility manifest
+        run: python engine/build_reproducibility_manifest.py
+
+  frontend:
+    name: Next.js checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install frontend dependencies
+        run: npm install --no-audit --no-fund
+      - name: TypeScript typecheck
+        run: npm run typecheck
+      - name: ESLint
+        run: npm run lint
+      - name: Production build
+        run: npm run build

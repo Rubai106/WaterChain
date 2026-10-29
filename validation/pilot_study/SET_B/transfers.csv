@@ -1,0 +1,5 @@
+transfer_id,from_entity_id,to_entity_id,transferred_at,transfer_reference,relationship_basis,notes
+TB-01,EB-SRC,EB-COL,2026-03-18T08:55:00Z,TRANSFER-FORM-B1,documented,Core chain transfer; evidence reference present.
+TB-02,EB-COL,EB-STO,2026-03-18T09:55:00Z,TRANSFER-FORM-B2,documented,Core chain transfer; evidence reference present.
+TB-03,EB-STO,EB-SRV,2026-03-18T10:55:00Z,TRANSFER-FORM-B3,documented,Core chain transfer; evidence reference present.
+TB-04,EB-ALT,EB-STO,2026-03-18T10:00:00Z,,self_reported,Side-path transfer mentioned in notes; no transfer record/reference supplied.

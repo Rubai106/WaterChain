@@ -1,0 +1,6 @@
+entity_id,entity_type,description,water_source_id,evidence_reference
+EA-SRC,source,Source point A,SRC-A17,FIELD-SHEET-A
+EA-COL,collection,Collection vessel A,SRC-A17,TRANSFER-FORM-A1
+EA-STO,storage,Household storage vessel A,SRC-A17,TRANSFER-FORM-A2
+EA-SRV,serving,Serving vessel A,SRC-A17,TRANSFER-FORM-A3
+EA-ALT,alternate,Unresolved alternate vessel A,SRC-A91,FIELD-LAB-DISAGREEMENT-A

@@ -1,0 +1,231 @@
+{
+  "title": "WaterChain Step 6 development holdout and adversarial validation",
+  "evaluation_type": "separately authored synthetic development holdout; not independent or blinded",
+  "not_real_world_performance": true,
+  "scenario_count": 16,
+  "expected_decision_conformance": 1.0,
+  "correct_stage_decisions": 16,
+  "abstention_cases": 13,
+  "unsupported_attributions_in_abstention_cases": 0,
+  "unsupported_attribution_rate_in_abstention_cases": 0.0,
+  "attribution_cases": 3,
+  "correct_attribution_cases": 3,
+  "cases": [
+    {
+      "case_id": "holdout_clean_collection_transition",
+      "purpose": "A new clean linked transition pattern at collection.",
+      "expected_stage": "collection",
+      "prediction": "collection",
+      "matches_expected_decision": true,
+      "attribution_permitted": true,
+      "confidence_label": "candidate transition only",
+      "finding_codes": [],
+      "rationale": "All stage records are eligible, share one batch and source, use the same analyte, and follow strict chronology."
+    },
+    {
+      "case_id": "holdout_clean_serving_transition",
+      "purpose": "Negative source/collection/storage and positive serving result.",
+      "expected_stage": "serving",
+      "prediction": "serving",
+      "matches_expected_decision": true,
+      "attribution_permitted": true,
+      "confidence_label": "candidate transition only",
+      "finding_codes": [],
+      "rationale": "One fully linked synthetic pathway with negative observations before the earliest positive."
+    },
+    {
+      "case_id": "holdout_no_positive",
+      "purpose": "All linked results are not detected.",
+      "expected_stage": null,
+      "prediction": null,
+      "matches_expected_decision": true,
+      "attribution_permitted": false,
+      "confidence_label": "insufficient evidence",
+      "finding_codes": [],
+      "rationale": "No positive transition is observed; no stage attribution should be emitted."
+    },
+    {
+      "case_id": "holdout_discordant_storage_repeats",
+      "purpose": "Storage has both detected and not-detected outcomes.",
+      "expected_stage": null,
+      "prediction": null,
+      "matches_expected_decision": true,
+      "attribution_permitted": false,
+      "confidence_label": "insufficient evidence",
+      "finding_codes": [
+        "discordant_stage_results"
+      ],
+      "rationale": "Discordant findings at a stage should be reviewed rather than letting a positive result automatically win."
+    },
+    {
+      "case_id": "holdout_duplicate_record_id",
+      "purpose": "Two distinct rows share a record identifier.",
+      "expected_stage": null,
+      "prediction": null,
+      "matches_expected_decision": true,
+      "attribution_permitted": false,
+      "confidence_label": "insufficient evidence",
+      "finding_codes": [
+        "duplicate_record_identifier"
+      ],
+      "rationale": "Duplicate identifiers can indicate duplicated imports or misidentified records, so attribution must stop."
+    },
+    {
+      "case_id": "holdout_reused_sample_id",
+      "purpose": "Source and storage rows use the same sample ID.",
+      "expected_stage": null,
+      "prediction": null,
+      "matches_expected_decision": true,
+      "attribution_permitted": false,
+      "confidence_label": "insufficient evidence",
+      "finding_codes": [
+        "sample_identity_reused_across_stages"
+      ],
+      "rationale": "Distinct pathway stages must have traceable, distinct physical samples for stage comparisons."
+    },
+    {
+      "case_id": "holdout_off_lineage_positive",
+      "purpose": "A positive record exists only on a different batch from the shared pathway.",
+      "expected_stage": null,
+      "prediction": null,
+      "matches_expected_decision": true,
+      "attribution_permitted": false,
+      "confidence_label": "insufficient evidence",
+      "finding_codes": [
+        "off_lineage_records"
+      ],
+      "rationale": "The engine should use only the unique batch linked across all four stages, not the unrelated batch's result."
+    },
+    {
+      "case_id": "holdout_two_common_batches",
+      "purpose": "Every stage contains evidence for two common batch identifiers.",
+      "expected_stage": null,
+      "prediction": null,
+      "matches_expected_decision": true,
+      "attribution_permitted": false,
+      "confidence_label": "insufficient evidence",
+      "finding_codes": [
+        "ambiguous_multiple_common_batches",
+        "lineage_unproven",
+        "discordant_stage_results",
+        "discordant_stage_results"
+      ],
+      "rationale": "The engine must not merge multiple possible water journeys into one transition claim."
+    },
+    {
+      "case_id": "holdout_qc_incomplete",
+      "purpose": "A positive storage result has an undocumented control.",
+      "expected_stage": null,
+      "prediction": null,
+      "matches_expected_decision": true,
+      "attribution_permitted": false,
+      "confidence_label": "insufficient evidence",
+      "finding_codes": [
+        "record_excluded",
+        "no_shared_batch_link",
+        "lineage_unproven"
+      ],
+      "rationale": "QC fields must explicitly pass for the result to be eligible for cross-stage inference."
+    },
+    {
+      "case_id": "holdout_qc_failed",
+      "purpose": "A positive storage result has a failed negative control.",
+      "expected_stage": null,
+      "prediction": null,
+      "matches_expected_decision": true,
+      "attribution_permitted": false,
+      "confidence_label": "insufficient evidence",
+      "finding_codes": [
+        "record_excluded",
+        "no_shared_batch_link",
+        "lineage_unproven"
+      ],
+      "rationale": "A QC failure excludes the result from inference."
+    },
+    {
+      "case_id": "holdout_equal_adjacent_timestamps",
+      "purpose": "Source and collection timestamps are indistinguishable.",
+      "expected_stage": null,
+      "prediction": null,
+      "matches_expected_decision": true,
+      "attribution_permitted": false,
+      "confidence_label": "insufficient evidence",
+      "finding_codes": [
+        "timeline_conflict"
+      ],
+      "rationale": "Equal timestamps do not establish strict order for the conceptual pathway."
+    },
+    {
+      "case_id": "holdout_conflicting_sources",
+      "purpose": "A batch-associated record names a conflicting water source.",
+      "expected_stage": null,
+      "prediction": null,
+      "matches_expected_decision": true,
+      "attribution_permitted": false,
+      "confidence_label": "insufficient evidence",
+      "finding_codes": [
+        "source_identity_conflict",
+        "lineage_unproven"
+      ],
+      "rationale": "Source identity conflict prevents attribution across the purported path."
+    },
+    {
+      "case_id": "holdout_mixed_analytes",
+      "purpose": "Only the storage record switches from presence/absence to concentration.",
+      "expected_stage": null,
+      "prediction": null,
+      "matches_expected_decision": true,
+      "attribution_permitted": false,
+      "confidence_label": "insufficient evidence",
+      "finding_codes": [
+        "mixed_analyte_pathway"
+      ],
+      "rationale": "Different analytes/results cannot be combined into one stage-transition claim."
+    },
+    {
+      "case_id": "holdout_consistent_quantitative_serving",
+      "purpose": "One consistent quantitative analyte, positive serving concentration, negatives upstream.",
+      "expected_stage": "serving",
+      "prediction": "serving",
+      "matches_expected_decision": true,
+      "attribution_permitted": true,
+      "confidence_label": "candidate transition only",
+      "finding_codes": [],
+      "rationale": "The supported concentration format can be used when all stages use the same analyte and the quantitative value/unit are present."
+    },
+    {
+      "case_id": "holdout_source_positive_origin_unknown",
+      "purpose": "Source and downstream stages all report positive.",
+      "expected_stage": null,
+      "prediction": null,
+      "matches_expected_decision": true,
+      "attribution_permitted": false,
+      "confidence_label": "observed at source; origin timing unresolved",
+      "finding_codes": [
+        "transition_not_bracketed"
+      ],
+      "rationale": "An observed source positive is not a claim that contamination originated there."
+    },
+    {
+      "case_id": "holdout_missing_collection",
+      "purpose": "Collection-stage evidence is absent.",
+      "expected_stage": null,
+      "prediction": null,
+      "matches_expected_decision": true,
+      "attribution_permitted": false,
+      "confidence_label": "insufficient evidence",
+      "finding_codes": [
+        "no_shared_batch_link",
+        "lineage_unproven"
+      ],
+      "rationale": "A four-stage transition cannot be discussed when one stage lacks an eligible result."
+    }
+  ],
+  "limitations": [
+    "Every case is synthetic and authored by the developer; no real samples or lab results are present.",
+    "The test set is separate from the Step 5 scenario generator but is not independently blinded or externally adjudicated.",
+    "Conformance measures software behavior against hand-declared expected decisions, not real-world causal accuracy.",
+    "The rule engine does not model intermittent contamination, sample sensitivity, transfer/refill graphs, or probabilistic uncertainty.",
+    "Passing this suite does not establish safety, public-health utility, scientific validation, novelty, or superiority over other tools."
+  ]
+}

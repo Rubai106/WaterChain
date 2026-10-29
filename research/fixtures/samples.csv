@@ -1,0 +1,7 @@
+sample_id,visit_id,region,district,date_sampled,sample_type,bottle_number,date_incubation,date_result,petri_dish_number,ecoli_cfu,tntc,volume_ml,contamination_category,lab_notes,match_status
+1,10,Region A,District A,2025-01-01,borehole,1,2025-01-01,2025-01-02,1,0,FALSE,100,Safe,,matched
+2,20,Region A,District A,2025-01-01,transport_container,1,2025-01-01,2025-01-02,2,0,FALSE,100,Safe,,matched
+3,20,Region A,District A,2025-01-01,storage_container,2,2025-01-01,2025-01-02,3,7,FALSE,100,Slightly contaminated,,matched
+4,21,Region A,District A,2025-01-02,transport_container,1,2025-01-02,2025-01-03,4,101,TRUE,100,Unsafe,,matched
+5,21,Region A,District A,2025-01-02,storage_container,2,2025-01-02,2025-01-03,5,101,TRUE,100,Unsafe,,matched
+6,NA,Region A,District A,2025-01-02,NA,99,2025-01-02,2025-01-03,6,1,FALSE,100,Slightly contaminated,,ambiguous key

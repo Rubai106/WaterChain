@@ -1,0 +1,6 @@
+entity_id,entity_type,description,water_source_id,evidence_reference
+EB-SRC,source,Source point B,SRC-B42,FIELD-SHEET-B
+EB-COL,collection,Collection vessel B,SRC-B42,TRANSFER-FORM-B1
+EB-STO,storage,Household storage vessel B,SRC-B42,TRANSFER-FORM-B2
+EB-SRV,serving,Serving vessel B,SRC-B42,TRANSFER-FORM-B3
+EB-ALT,alternate,Unresolved alternate vessel B,SRC-B77,FIELD-LAB-DISAGREEMENT-B
