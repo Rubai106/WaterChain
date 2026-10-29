@@ -15,13 +15,7 @@ CHECKS = [
     ("dataset_adapter_tests", [sys.executable, "-m", "unittest", "discover", "-s", "research/datasets", "-p", "test_*.py", "-v"]),
     ("synthetic_evaluation", [sys.executable, "engine/evaluate.py"]),
     ("synthetic_holdout", [sys.executable, "engine/run_holdout_validation.py"]),
-    ("independent_review_unit_tests", ["node", "--test", "tests/unit/independent-review.test.cjs"]),
-    ("typescript_syntax", ["node", "scripts/check-typescript-syntax.cjs"]),
     ("step19_validation_tools", [sys.executable, "-m", "unittest", "discover", "-s", "validation", "-p", "test_*.py", "-v"]),
-    ("frontend_dependency_install", ["npm", "ci", "--no-audit", "--no-fund"]),
-    ("frontend_typecheck", ["npx", "tsc", "--noEmit"]),
-    ("frontend_lint", ["npx", "eslint", "."]),
-    ("frontend_production_build", ["npm", "run", "build"]),
 ]
 INPUTS = [
     "README.md", "package.json", "package-lock.json", "STEP19_CHANGELOG.md", "STEP12_PRODUCT_FOUNDATION.md",
@@ -77,9 +71,9 @@ INPUTS = [
     "validation/user_evaluation_capture_template.csv", "validation/pilot_study/PARTICIPANT_RESPONSE_TEMPLATE.csv",
     "validation/pilot_study/PLANNED_ASSIGNMENT_MATRIX_NOT_DATA.csv",
     "validation/pilot_study/SET_A/records.csv", "validation/pilot_study/SET_A/entities.csv", "validation/pilot_study/SET_A/transfers.csv",
-    "validation/pilot_study/SET_A/PARTICIPANT_TASK.md", "validation/pilot_study/SET_A/FACILITATOR_ANSWER_KEY_NOT_FOR_PARTICIPANTS.md",
+    "validation/pilot_study/SET_A/PARTICIPANT_TASK.md",
     "validation/pilot_study/SET_B/records.csv", "validation/pilot_study/SET_B/entities.csv", "validation/pilot_study/SET_B/transfers.csv",
-    "validation/pilot_study/SET_B/PARTICIPANT_TASK.md", "validation/pilot_study/SET_B/FACILITATOR_ANSWER_KEY_NOT_FOR_PARTICIPANTS.md",
+    "validation/pilot_study/SET_B/PARTICIPANT_TASK.md",
     "validation/STEP19_PROJECT_REPORT.md", "validation/STEP19_EVIDENCE_SUMMARY.md",
     "validation/STEP19_READINESS_AND_SCORECARD.md", "validation/STEP19_EXECUTION_REPORT.md",
     "lib/case-report.ts", "tests/e2e/case-report.spec.ts",
@@ -128,9 +122,9 @@ def main() -> int:
         if path.is_file(): hashes[rel] = sha256(path)
         else: missing.append(rel)
     manifest = {
-        "manifest_schema": "waterchain-reproducibility-manifest-v4",
+        "manifest_schema": "waterchain-reproducibility-manifest-v5",
         "project_step": 20,
-        "scope": "Step 20 competition-readiness verification: fresh npm ci, typecheck, lint, and production build executed in this environment (closing the Step 19 frontend BLOCKED item); comparative evaluation re-run in-process and through the live API; human-readable case-report export added with regression tests; prior-art matrix from fresh 2026-10-29 research; two-page report, abstract, evidence summary, demo script, and evidence-linked scorecard (49/60). The comparative fixtures remain developer-authored synthetic cases. No external review or participant study is claimed.",
+        "scope": "Step 20 Python engine and synthetic-validation manifest only. The Node independent-review unit tests, TypeScript syntax parser, typecheck, lint, and production build run in the separate Next.js job after dependency installation; the overall GitHub Actions workflow is green only when both jobs pass. Comparative fixtures remain developer-authored synthetic cases. No external review or participant study is claimed.",
         "created_at_utc": datetime.now(timezone.utc).isoformat(),
         "status": "FAIL" if any(row["status"] != "PASS" for row in checks) or missing else "PASS",
         "verified_checks_passed": all(row["status"] == "PASS" for row in checks) and not missing,
@@ -139,6 +133,7 @@ def main() -> int:
         "sha256_files": hashes,
         "missing_files": missing,
         "blocked_checks": [
+            {"name": "frontend_quality_gates", "status": "SEPARATE_JOB", "reason": "Independent-review unit tests, TypeScript syntax parsing, typecheck, lint, and production build are executed in the separate Next.js GitHub Actions job; the overall workflow must pass both jobs."},
             {"name": "playwright_e2e_full_suite", "status": "SEPARATE", "reason": "Long-running browser suite (sequential, 1 worker on ~1 GB free RAM) is executed outside this manifest builder; see TEST_REPORT_STEP20.md §6 for the recorded result."},
             {"name": "live_supabase_migration", "status": "BLOCKED", "reason": "No test database available; the migration remains an unconnected reference."},
             {"name": "external_reviewer_response", "status": "NOT_RUN", "reason": "Blind-review handoff builds cleanly, but no reviewer has been contacted; outreach is the project owner's action."},
@@ -150,7 +145,7 @@ def main() -> int:
             "The optional Supabase/PostgreSQL migration is not connected to the current localStorage-based app and has not been applied to a live database.",
             "A SHA-256 digest detects content changes but does not authenticate the original source, author, lab, date, or scientific correctness.",
             "An independent WASH/laboratory-method review and real-world validation remain pending; no reviewer response or user-study data is included.",
-            "ActionLoop and Risk & Control Register browser tests are included but were not executed in this environment because the dependency installation timed out.",
+            "This manifest does not execute the full Playwright end-to-end suite; its results must be read from the separate browser-test report and must not be inferred from this Python-only manifest.",
             "Risk and control records are stored separately in browser-local storage and exported separately from evidence backups; no live shared database is connected.",
             "Temporal observations are ordered by user-entered collection timestamps. Similar source/stage/analyte groups are not proof that samples came from the same physical sampling point.",
             "Action priority is deterministic and rule-based. It is not a calibrated risk score, cost estimate, or expected-information-gain measure.",
