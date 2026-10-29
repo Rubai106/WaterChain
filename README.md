@@ -143,6 +143,7 @@ These results are **fixture conformance, not real-world accuracy**. The first-po
 | `research/datasets/` | Water Quality Uganda adapter and tests |
 | `research/fixtures/` | Small synthetic fixtures used in reproducible software tests |
 | `tests/` | Unit and Playwright end-to-end tests |
+| `docs/history/` | Archived step-by-step bug-fix, changelog, and verification reports; not the current source of truth |
 | `validation/` | Review/pilot protocols, reviewer tooling, submission materials and limitations |
 | `.github/workflows/quality-gates.yml` | GitHub Actions quality gates |
 | `supabase/migrations/` | Reference schema for possible future persistence; not connected to the current app |

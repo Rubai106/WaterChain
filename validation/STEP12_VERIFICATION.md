@@ -1,6 +1,6 @@
 # WaterChain Step 12 verification report (initial supplier snapshot — superseded)
 
-> **Historical snapshot.** This document records the initial supplier-side verification before the later independent audit. Its reported npm-install blocker and its note that the real Uganda dataset had not yet been processed were accurate for that earlier run. The later audit supersedes this snapshot: see the top-level `TEST_REPORT.md` for the final frontend/API/browser-test accounting and `RESEARCH_DATA_AUDIT.md` for the actual published dataset profile. Keep this file only as an audit-trail record; do not use it as the current readiness summary.
+> **Historical snapshot.** This document records the initial supplier-side verification before the later independent audit. Its reported npm-install blocker and its note that the real Uganda dataset had not yet been processed were accurate for that earlier run. The later audit supersedes this snapshot: see the archived `../docs/history/TEST_REPORT.md` for the final frontend/API/browser-test accounting and `RESEARCH_DATA_AUDIT.md` for the actual published dataset profile. Keep this file only as an audit-trail record; do not use it as the current readiness summary.
 
 
 Verification date: 2026-10-28 (environment date).
