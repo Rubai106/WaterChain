@@ -114,6 +114,7 @@
     "docs/history/README.md": "f83844527326b71246ab8baed62be0ab791710bc47588601738498b273f48ae2",
     "docs/history/REDESIGN_CHANGELOG.md": "55a342adee5ef9f8022c38cdcd3880d256f56b6e8d444679e0b7d2209a7f2a44",
     "docs/history/REFINEMENT_CHANGELOG.md": "aa49e6c69a4455c5aeb1b6b06dc8d0b2027d8153bf1785764007b300d3ba3331",
+    "docs/history/SENSITIVITY_TEST_REPORT.md": "12b57ea70c47ad88dbc29f5e73dc77a7ce396a86062fee0b056281501ca156a0",
     "docs/history/STEP11_FIXES.md": "6420ec04e093b528a9e9067d496c96412e9bb5ffe7ab0ad276b2d01834a3a51c",
     "docs/history/STEP11_VERIFICATION.md": "9e60ea8e7750c06bddb9f5378fac7964fafb3a2afbda3f89d20d73813a99bada",
     "docs/history/STEP12_PRODUCT_FOUNDATION.md": "18bf6e2bce99501851c003f843a8896db43067c010210ed02ebc3e3874bf5e26",
@@ -131,7 +132,7 @@
     "docs/history/STEP16_VERIFICATION.md": "a3b459a8017b350585003bfb1de732fd806765e31849afcb2b498fe8ab6cd963",
     "docs/history/STEP19_CHANGELOG.md": "52d05ef548921f7a7542ebd3910f28546725d91f9d09226330cfb62a636ab9af",
     "docs/history/TEST_REPORT.md": "e1847ed3dc8cb37a9daf618857213512f4ae1d189862594315ff574c238ec0d0",
-    "engine/build_reproducibility_manifest.py": "c2e6ec1e66aa400c62ccf2c0c727b215232a6a4168405c01cebe0a86f4d9a52b",
+    "engine/build_reproducibility_manifest.py": "d744f4c57de8556320aaf0734a291b4faff85a25f746fd9eaa4605cda8812452",
     "engine/build_step18_reviewer_packet.py": "13ce77450ca9c43284dbd25c098f7e61f8904339b6dbf192304f3fed70ab968d",
     "engine/COMPARATIVE_EVALUATION_PROTOCOL.md": "17afa5e74f17aed20f623b8266fd926285e3df69fc2d8ee6cc7e41f118b826bd",
     "engine/diagnose_cli.py": "2f6fd0bc79f5f9b4da3bfe5b96c7c0d61524517e5d173483d151efad8e32611e",
@@ -183,7 +184,6 @@
     "RISK_CONTROL_TEST_PLAN.md": "a0c06b149c5b2bab4c7876fd2788bff9c44cd247b12ad3d6ee8cc1f4a0b034a2",
     "SCIENTIFIC_VALIDATION_REPORT.md": "b1710b26efc1dc9dfdd30047d27e6d2c97f1bf65f3c063b1a4d50effc5506e46",
     "scripts/check-typescript-syntax.cjs": "5f80193d1dd2b951a79aa0a4812092d6f05c625de6552321227de20b91578cb9",
-    "SENSITIVITY_TEST_REPORT.md": "12b57ea70c47ad88dbc29f5e73dc77a7ce396a86062fee0b056281501ca156a0",
     "STARTUP_GUIDE.md": "7c3fa50d359edf7122eb7d16196fda5f4da6d46b7106ec3b69cb35f148c6488f",
     "STEP16_DECISION_ROBUSTNESS.md": "9ea4471b35bca39f7a515fabaaf9de4457fdd700dd5b38737e91de8d3a1d2078",
     "STEP16_NOVELTY_AND_PRODUCT_STRATEGY.md": "25e4cac322d3a23d455db6aeab9941ad36db6eb22ee5ecd43e262fc1573ae663",
@@ -299,7 +299,7 @@
     "The private comparison key and reviewer results remain in browser localStorage. They are not protected by authenticated access controls and can be lost or modified if the browser profile is cleared or tampered with.",
     "Review CSV imports are bound to a packet ID, validate record aliases, require a pseudonymous reviewer code, role, ISO date and rationale; this reduces accidental mismatch but is not cryptographic reviewer authentication."
   ],
-  "archive_note": "Documentation cleanup: 33 historical root reports moved to docs/history; historic files are preserved. Hashes are aligned to the current declared input list. The overall CI workflow currently passes; Playwright E2E remains outside this workflow.",
+  "archive_note": "Documentation cleanup: 34 historical root reports moved to docs/history; historic files are preserved. Hashes are aligned to the current declared input list. The overall CI workflow currently passes; Playwright E2E remains outside this workflow.",
   "verification_source": {
     "provider": "GitHub Actions",
     "run_id": 40901121415,

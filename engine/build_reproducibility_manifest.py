@@ -45,7 +45,7 @@ INPUTS = [
     "lib/action-loop.ts", "components/actions/ActionLoop.tsx", "tests/e2e/action-loop.spec.ts",
     "components/diagnostics/DecisionRobustnessStudio.tsx", "tests/e2e/decision-robustness.spec.ts",
     "STEP16_DECISION_ROBUSTNESS.md", "STEP16_NOVELTY_AND_PRODUCT_STRATEGY.md", "docs/history/STEP16_VERIFICATION.md",
-    "docs/history/STEP16_CHANGELOG.md", "docs/history/STEP16_RELEASE_AUDIT.md", "SENSITIVITY_TEST_REPORT.md", "docs/history/BUG_FIX_SUMMARY_STEP16.md",
+    "docs/history/STEP16_CHANGELOG.md", "docs/history/STEP16_RELEASE_AUDIT.md", "docs/history/SENSITIVITY_TEST_REPORT.md", "docs/history/BUG_FIX_SUMMARY_STEP16.md",
     "ACTIONLOOP_GUIDE.md", "docs/history/STEP13_CHANGELOG.md", "docs/history/STEP13_VERIFICATION.md", "docs/history/STEP13_RELEASE_AUDIT.md",
     "lib/risk-register.ts", "components/risks/RiskControlRegister.tsx", "tests/e2e/risk-control-register.spec.ts",
     "RISK_CONTROL_REGISTER_GUIDE.md", "RISK_CONTROL_TEST_PLAN.md", "docs/history/STEP14_CHANGELOG.md", "docs/history/STEP14_VERIFICATION.md", "docs/history/STEP14_RELEASE_AUDIT.md",
