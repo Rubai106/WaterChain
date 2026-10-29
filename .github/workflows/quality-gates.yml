@@ -33,6 +33,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Regenerate lockfile optional dependency metadata
+        run: npm install --package-lock-only --include=optional --no-audit --no-fund
+      - name: Upload normalized lockfile for commit
+        uses: actions/upload-artifact@v4
+        with:
+          name: waterchain-normalized-package-lock
+          path: package-lock.json
+          if-no-files-found: error
       - name: Install frontend dependencies
         run: npm ci --no-audit --no-fund
       - name: Independent-review unit tests
