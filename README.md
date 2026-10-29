@@ -165,6 +165,7 @@ The current workflow does not run the full Playwright end-to-end suite. See the 
 - [Startup guide](STARTUP_GUIDE.md)
 - [Judge demo checklist](JUDGE_DEMO_CHECKLIST.md)
 - [Scientific validation report](SCIENTIFIC_VALIDATION_REPORT.md)
+- [Archived implementation and verification history](docs/history/README.md)
 
 ## CSV format
 

@@ -23,7 +23,7 @@ fair substitute for a validated operational method.
 - The engine itself was designed and tuned on earlier fixtures (Steps 6-16).
 - Expected decisions were fixed at authoring time from the documented rules,
   before the comparison was executed. Two authored expectations were corrected
-  after execution (documented in BUG_FIX_SUMMARY_STEP18.md): both were wrong
+  after execution (documented in docs/history/BUG_FIX_SUMMARY_STEP18.md): both were wrong
   expectations about which next-action IDs the planner emits, not engine
   decision changes. No diagnostic rule was altered to fit the fixtures.
 - Conformance figures measure fixture conformance on developer-authored cases.

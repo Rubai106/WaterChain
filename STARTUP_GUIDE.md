@@ -4,7 +4,7 @@ Verified on 2026-10-28 with Node 24.22.1 / npm 10.9.4 and Python
 3.12.3. The documented minima are Node 20.9+ and Python 3.10+;
 if you run exactly those minima and anything differs, tell the
 maintainer — the audit matrix did not cover them (see
-`TEST_REPORT.md`).
+`docs/history/TEST_REPORT.md`).
 
 ## 1. Prerequisites
 
@@ -212,7 +212,7 @@ The latest diagnostic report is saved locally per investigation. After switching
 - Stage details join eligibility responses using the immutable internal `record_id`, not the human-visible `record_code`.
 - Once evidence changes, the old result and hypothesis panels disappear from the default view. The stale report remains behind an explicit collapsed `View previous report` disclosure for audit context, and it cannot be exported as a current report. Run the diagnostic review again to show current results.
 - Manual evidence codes are generated with collision checks against the current investigation, and the save path rejects duplicates defensively. Internal identity remains a UUID.
-- Step 11's added browser checks are in `tests/e2e/pathway.spec.ts` and `tests/e2e/workflows.spec.ts`. (Superseded note: the Step 11 author's environment could not complete `npm ci` at the time, but the independent Step 12 pass ran the full browser suite in a dependency-enabled environment — see `TEST_REPORT.md`.)
+- Step 11's added browser checks are in `tests/e2e/pathway.spec.ts` and `tests/e2e/workflows.spec.ts`. (Superseded note: the Step 11 author's environment could not complete `npm ci` at the time, but the independent Step 12 pass ran the full browser suite in a dependency-enabled environment — see `docs/history/TEST_REPORT.md`.)
 
 ## Step 12 — Relationship model, local provenance and real-data adapter
 
@@ -274,7 +274,7 @@ python engine/build_reproducibility_manifest.py
 ## Step 12 independent audit — what changed in this TestVerified package
 
 This package was independently re-verified end to end (see
-`BUG_FIX_SUMMARY_STEP12.md` for the full list). In the supplied Step 12
+`docs/history/BUG_FIX_SUMMARY_STEP12.md` for the full list). In the supplied Step 12
 archive, `npm run typecheck` and `npm run build` failed and `npm run lint`
 reported errors; all three now pass (lint: 0 errors, 1 pre-existing
 `react-hooks/exhaustive-deps` warning in `app/page.tsx`). Engine tests grew
@@ -301,7 +301,7 @@ browser-local audit ledger as tamper-proof or authenticated.
 
 ## Step 13 — ActionLoop
 
-After running a current diagnostic review, use **ActionLoop** to create an action from a finding or recommendation, or create a manual follow-up. Assign an owner, record the intended outcome, and optionally set a due date. Actions remain open until work is submitted with evidence references and a differently named reviewer records verification. Names are self-entered and unauthenticated. ActionLoop uses a separate localStorage key; use **Export action log** separately from the evidence backup before clearing browser data. See `ACTIONLOOP_GUIDE.md` and `STEP13_VERIFICATION.md`.
+After running a current diagnostic review, use **ActionLoop** to create an action from a finding or recommendation, or create a manual follow-up. Assign an owner, record the intended outcome, and optionally set a due date. Actions remain open until work is submitted with evidence references and a differently named reviewer records verification. Names are self-entered and unauthenticated. ActionLoop uses a separate localStorage key; use **Export action log** separately from the evidence backup before clearing browser data. See `ACTIONLOOP_GUIDE.md` and `docs/history/STEP13_VERIFICATION.md`.
 
 
 ## 7. Step 14 Risk & Control Register
@@ -312,7 +312,7 @@ Controls start as Proposed or Documented. Record implementation separately, then
 
 The register can create linked corrective tasks in ActionLoop. Risk/control records and ActionLoop tasks have separate browser-local stores and separate exports; the main evidence backup does not include them. Save the risk-register export and ActionLoop export as well as the evidence backup before clearing browser data. Names are self-entered and not authenticated; this prototype must not be treated as a certified water safety plan or an operational public-health system.
 
-Step 14 Playwright regression scenarios live in `tests/e2e/risk-control-register.spec.ts`. The authoring environment could run the Python suites and TypeScript/TSX syntax parser, but `npm ci` timed out, so the frontend typecheck/lint/build and browser suite were unverified there (see `STEP14_VERIFICATION.md`). **Superseded:** the independent Step 16 verification pass (2026-10-29) executed them — typecheck/lint/build PASS, and the risk-control suite passes 4/4 after test-side corrections documented in `BUG_FIX_SUMMARY_STEP16.md` (D6).
+Step 14 Playwright regression scenarios live in `tests/e2e/risk-control-register.spec.ts`. The authoring environment could run the Python suites and TypeScript/TSX syntax parser, but `npm ci` timed out, so the frontend typecheck/lint/build and browser suite were unverified there (see `docs/history/STEP14_VERIFICATION.md`). **Superseded:** the independent Step 16 verification pass (2026-10-29) executed them — typecheck/lint/build PASS, and the risk-control suite passes 4/4 after test-side corrections documented in `docs/history/BUG_FIX_SUMMARY_STEP16.md` (D6).
 
 
 ## Step 15 temporal evidence checks
@@ -352,9 +352,9 @@ Step 16 regression tests: `engine/test_step16_sensitivity.py` (run
 with the engine suite) and `tests/e2e/decision-robustness.spec.ts`
 (run `npx playwright test tests/e2e/decision-robustness.spec.ts` after
 dependencies and Chromium are installed). Full method, decision-change
-matrix, and interpretation limits: `SENSITIVITY_TEST_REPORT.md`.
+matrix, and interpretation limits: `docs/history/SENSITIVITY_docs/history/TEST_REPORT.md`.
 Defects fixed in the independent Step 16 pass:
-`BUG_FIX_SUMMARY_STEP16.md`.
+`docs/history/BUG_FIX_SUMMARY_STEP16.md`.
 
 ## Step 18 additions (2026-10-29)
 
@@ -380,8 +380,8 @@ Defects fixed in the independent Step 16 pass:
   build (`npm run build && npm run start -- -p 3107`) on a quiet machine
   with >2 GB free RAM.
 - Defects fixed in the independent Step 18 pass:
-  `BUG_FIX_SUMMARY_STEP18.md`. Current verification:
-  `TEST_REPORT_STEP18.md`.
+  `docs/history/BUG_FIX_SUMMARY_STEP18.md`. Current verification:
+  `docs/history/TEST_REPORT_STEP18.md`.
 
 ## Step 20 additions (2026-10-29)
 

@@ -8,7 +8,7 @@
 
 - Python engine suite: 91 tests reported by the Step 18 report; re-executed in this Step 19 environment.
 - Dataset adapter suite: 12 tests reported; re-executed in this Step 19 environment.
-- Step 18 comparative harness has 13 developer-authored adversarial cases. Its stored JSON report is `via_api: false`, indicating that particular stored artifact is the in-process run. The separate `TEST_REPORT_STEP18.md` reports a prior production API run with 12/12 JSON-carryable scenarios matching. Keep those two pieces of evidence separate; do not label the stored JSON itself as an API run.
+- Step 18 comparative harness has 13 developer-authored adversarial cases. Its stored JSON report is `via_api: false`, indicating that particular stored artifact is the in-process run. The separate `docs/history/TEST_REPORT_STEP18.md` reports a prior production API run with 12/12 JSON-carryable scenarios matching. Keep those two pieces of evidence separate; do not label the stored JSON itself as an API run.
 - Stored fixture result: 0/9 unsupported attributions by WaterChain and 8/9 by the naive first-positive baseline (88.9%), on cases where the author rubric expects abstention. This baseline is deliberately weak and the fixtures were developer-authored with knowledge of the engine. The result is fixture conformance, not real-world accuracy and not a fair comparison against a competent manual workflow.
 - Real-data profile describes published observational Water Quality Uganda data. Its joins/QC summaries are data-quality observations only and do not establish causal truth or field effectiveness.
 - Blind reviewer packet has 13 Step 18 synthetic cases with per-case record hashes and no expected decisions exposed. Reviewer response remains pending.
