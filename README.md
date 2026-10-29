@@ -83,7 +83,7 @@ Open [http://localhost:3000](http://localhost:3000).
 On Windows, if the Node.js process cannot find Python, set `PYTHON_EXECUTABLE` to the full path to your Python executable in PowerShell:
 
 ```powershell
-$env:PYTHON_EXECUTABLE = "C:\\Path\\To\\Python\\python.exe"
+$env:PYTHON_EXECUTABLE = "C:\Path\To\Python\python.exe"
 npm run dev
 ```
 
