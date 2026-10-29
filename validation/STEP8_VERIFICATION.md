@@ -48,7 +48,7 @@
 The original Step 8 checks above were honest about their limits: the
 frontend had never been built or run in the authoring environment. This
 addendum records what an independent audit actually ran against this
-corrected package; the full evidence is in the root `TEST_REPORT.md`.
+corrected package; the full evidence is in the archived `../docs/history/TEST_REPORT.md`.
 
 - `npm install` succeeded (Node 24.22.1, npm 10.9.4; `package-lock.json`
   generated during the audit is now included). Two blockers found and
