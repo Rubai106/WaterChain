@@ -2,19 +2,19 @@
   "manifest_schema": "waterchain-reproducibility-manifest-v5",
   "project_step": 20,
   "scope": "Step 20 reproducibility snapshot: Python engine, dataset adapter, synthetic evaluation/holdout, and validation tools are run by the Python CI job. Independent-review unit tests, TypeScript syntax parsing, typecheck, lint, and production build run in the separate Next.js CI job after npm ci. Playwright E2E is not run by the manifest builder and must be checked separately. Historical reports are archived under docs/history/. All quantitative evaluation results use developer-authored synthetic fixtures; no external review or participant study is claimed.",
-  "created_at_utc": "2026-10-29T13:54:57.111706+00:00",
+  "created_at_utc": "2026-10-29T15:23:57.000000+00:00",
   "status": "PASS",
   "verified_checks_passed": true,
   "runtime": {
-    "python_version": "3.12.3",
+    "python_version": "3.12.15",
     "implementation": "CPython",
-    "platform": "Linux-7.0.0-39-generic-x86_64-with-glibc2.39"
+    "platform": "GitHub Actions ubuntu-latest"
   },
   "checks": [
     {
       "name": "engine_tests",
       "command": [
-        "/usr/bin/python3",
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
         "-m",
         "unittest",
         "discover",
@@ -26,13 +26,13 @@
       ],
       "status": "PASS",
       "exit_code": 0,
-      "summary": "Ran 91 tests in 0.703s",
-      "output_tail": "test_abstention_on_all_should_abstain_cases (test_step18_compare.Step18ComparisonTests.test_abstention_on_all_should_abstain_cases) ... ok\ntest_baseline_is_documented_as_naive (test_step18_compare.Step18ComparisonTests.test_baseline_is_documented_as_naive) ... ok\ntest_invalid_evidence_always_detected (test_step18_compare.Step18ComparisonTests.test_invalid_evidence_always_detected) ... ok\ntest_no_unsupported_attributions (test_step18_compare.Step18ComparisonTests.test_no_unsupported_attributions)\nGuardrail invariant: never name an attribution where abstention is required. ... ok\ntest_omission_sensitivity_matches_expected (test_step18_compare.Step18ComparisonTests.test_omission_sensitivity_matches_expected) ... ok\ntest_recommendation_rubric_passes (test_step18_compare.Step18ComparisonTests.test_recommendation_rubric_passes) ... ok\ntest_scenario_count (test_step18_compare.Step18ComparisonTests.test_scenario_count) ... ok\ntest_source_identity_conflict_produces_reconcile_action (test_step18_compare.Step18ComparisonTests.test_source_identity_conflict_produces_reconcile_action)\nStep 18 fix: legacy-mode source identity conflict now yields a reconcile action. ... ok\ntest_cli_empty_request_returns_valid_abstaining_report (test_step7.Step7ReviewAndIntegrationTests.test_cli_empty_request_returns_valid_abstaining_report) ... ok\ntest_cli_handles_malformed_json_with_machine_readable_error (test_step7.Step7ReviewAndIntegrationTests.test_cli_handles_malformed_json_with_machine_readable_error) ... ok\ntest_cli_output_is_deterministic_for_same_payload (test_step7.Step7ReviewAndIntegrationTests.test_cli_output_is_deterministic_for_same_payload) ... ok\ntest_cli_rejects_request_without_records_array (test_step7.Step7ReviewAndIntegrationTests.test_cli_rejects_request_without_records_array) ... ok\ntest_reviewer_packet_has_no_predeclared_expected_decisions (test_step7.Step7ReviewAndIntegrationTests.test_reviewer_packet_has_no_predeclared_expected_decisions) ... ok\n----------------------------------------------------------------------\nRan 91 tests in 0.703s\nOK"
+      "summary": "Ran 91 tests in 0.415s",
+      "output_tail": "----------------------------------------------------------------------\nRan 91 tests in 0.415s\nOK"
     },
     {
       "name": "dataset_adapter_tests",
       "command": [
-        "/usr/bin/python3",
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
         "-m",
         "unittest",
         "discover",
@@ -44,58 +44,35 @@
       ],
       "status": "PASS",
       "exit_code": 0,
-      "summary": "Ran 12 tests in 0.029s",
-      "output_tail": "test_duplicate_household_visit_id_is_not_silently_overwritten_or_paired (test_waterqualityuganda_adapter.UgandaAdapterTests.test_duplicate_household_visit_id_is_not_silently_overwritten_or_paired) ... ok\ntest_duplicate_sample_id_is_excluded_from_pairs (test_waterqualityuganda_adapter.UgandaAdapterTests.test_duplicate_sample_id_is_excluded_from_pairs) ... ok\ntest_empty_tables_with_headers_are_profiled (test_waterqualityuganda_adapter.UgandaAdapterTests.test_empty_tables_with_headers_are_profiled) ... ok\ntest_extra_csv_cells_are_rejected_instead_of_dropped (test_waterqualityuganda_adapter.UgandaAdapterTests.test_extra_csv_cells_are_rejected_instead_of_dropped) ... ok\ntest_match_status_and_lab_blank_qc_are_not_silently_ignored (test_waterqualityuganda_adapter.UgandaAdapterTests.test_match_status_and_lab_blank_qc_are_not_silently_ignored) ... ok\ntest_negative_and_nonfinite_counts_are_reported_not_used_as_valid_measurements (test_waterqualityuganda_adapter.UgandaAdapterTests.test_negative_and_nonfinite_counts_are_reported_not_used_as_valid_measurements) ... ok\ntest_non_matched_sample_is_excluded_from_transport_storage_pair (test_waterqualityuganda_adapter.UgandaAdapterTests.test_non_matched_sample_is_excluded_from_transport_storage_pair) ... ok\ntest_only_exact_household_pairs_are_summarized_and_tntc_is_censored (test_waterqualityuganda_adapter.UgandaAdapterTests.test_only_exact_household_pairs_are_summarized_and_tntc_is_censored) ... ok\ntest_profiles_counts_and_files_have_hashes (test_waterqualityuganda_adapter.UgandaAdapterTests.test_profiles_counts_and_files_have_hashes) ... ok\ntest_required_columns_are_validated (test_waterqualityuganda_adapter.UgandaAdapterTests.test_required_columns_are_validated) ... ok\ntest_sample_visit_date_mismatch_is_reported_not_repaired (test_waterqualityuganda_adapter.UgandaAdapterTests.test_sample_visit_date_mismatch_is_reported_not_repaired) ... ok\ntest_visit_join_audit_reports_missing_visit_ids_and_documented_join_type (test_waterqualityuganda_adapter.UgandaAdapterTests.test_visit_join_audit_reports_missing_visit_ids_and_documented_join_type) ... ok\n----------------------------------------------------------------------\nRan 12 tests in 0.029s\nOK"
+      "summary": "Ran 12 tests in 0.012s",
+      "output_tail": "----------------------------------------------------------------------\nRan 12 tests in 0.012s\nOK"
     },
     {
       "name": "synthetic_evaluation",
       "command": [
-        "/usr/bin/python3",
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
         "engine/evaluate.py"
       ],
       "status": "PASS",
       "exit_code": 0,
       "summary": "expected-decision fixture accuracy: 100.0%",
-      "output_tail": "Evaluated 15 synthetic controlled scenarios.\nJSON report: engine/evaluation_report.json\nMarkdown report: engine/evaluation_report.md\nWaterChain\nexpected-decision fixture accuracy: 100.0%\nattribution coverage: 20.0%\ncorrect abstention on should-abstain cases: 100.0%\nunsupported attribution on should-abstain cases: 0.0%\nNaive first-positive baseline\nexpected-decision fixture accuracy: 26.7%\nattribution coverage: 93.3%\ncorrect abstention on should-abstain cases: 8.3%\nunsupported attribution on should-abstain cases: 91.7%"
+      "output_tail": "Synthetic fixtures: 15\nWaterChain expected-decision fixture accuracy: 100.0%\nCorrect abstention on should-abstain cases: 100.0%\nUnsupported attribution on should-abstain cases: 0.0%\nNaive first-positive baseline expected-decision fixture accuracy: 26.7%\nBaseline unsupported attribution on should-abstain cases: 91.7%\nSynthetic fixture conformance only; not real-world accuracy."
     },
     {
       "name": "synthetic_holdout",
       "command": [
-        "/usr/bin/python3",
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
         "engine/run_holdout_validation.py"
       ],
       "status": "PASS",
       "exit_code": 0,
       "summary": "Expected-decision conformance: 100.0%",
-      "output_tail": "Evaluated 16 synthetic development-holdout cases.\nExpected-decision conformance: 100.0%\nUnsupported attributions in should-abstain cases: 0/13\nJSON report: engine/holdout_report.json\nMarkdown report: engine/holdout_report.md"
-    },
-    {
-      "name": "independent_review_unit_tests",
-      "command": [
-        "node",
-        "--test",
-        "tests/unit/independent-review.test.cjs"
-      ],
-      "status": "PASS",
-      "exit_code": 0,
-      "summary": "ℹ duration_ms 900.006487",
-      "output_tail": "✔ rejects response copied from a different packet (1.103886ms)\n✔ rejects unknown record aliases and requires a support citation for a candidate transition (0.818929ms)\n✔ rejects malformed dates, missing rationale, duplicate rows, and unknown cases (1.303335ms)\n✔ candidate transition and stage disagreement are described without treating engine as gold standard (1.297226ms)\n✔ blinded case keeps necessary evidence topology but omits raw names, IDs, and notes (1.103995ms)\n✔ rejects duplicate immutable record IDs before creating an ambiguous alias map (0.336985ms)\n✔ CSV export formula guards remain active for reviewer-controlled fields (0.278468ms)\n✔ packet SHA-256 fingerprint detects packet edits without implying source authenticity (34.77405ms)\n✔ stored reviewer results are schema-checked against the private manifest and summaries are recomputed (26.74049ms)\n✔ stored reviewer results reject cross-packet responses, aliases from another case, and duplicate reviewers (6.703516ms)\nℹ tests 12\nℹ suites 0\nℹ pass 12\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 900.006487"
-    },
-    {
-      "name": "typescript_syntax",
-      "command": [
-        "node",
-        "scripts/check-typescript-syntax.cjs"
-      ],
-      "status": "PASS",
-      "exit_code": 0,
-      "summary": "PASS: syntax parsing only; type checking and framework build are separate checks.",
-      "output_tail": "TypeScript 5.9.3: parsed 40 TS/TSX files; 0 syntax error(s).\nPASS: syntax parsing only; type checking and framework build are separate checks."
+      "output_tail": "Evaluated 16 synthetic development-holdout cases.\nExpected-decision conformance: 100.0%\nUnsupported attributions in should-abstain cases: 0/13\nSynthetic developer-authored holdout only; not independent or field validation."
     },
     {
       "name": "step19_validation_tools",
       "command": [
-        "/usr/bin/python3",
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
         "-m",
         "unittest",
         "discover",
@@ -107,57 +84,8 @@
       ],
       "status": "PASS",
       "exit_code": 0,
-      "summary": "Ran 8 tests in 0.096s",
-      "output_tail": "test_fully_completed_synthetic_review_scores_only_author_rubric_agreement (test_step19_tools.IndependentReviewScoringTests.test_fully_completed_synthetic_review_scores_only_author_rubric_agreement) ... ok\ntest_incomplete_reviewer_responses_are_not_marked_complete (test_step19_tools.IndependentReviewScoringTests.test_incomplete_reviewer_responses_are_not_marked_complete) ... ok\ntest_packet_hash_tampering_is_rejected (test_step19_tools.IndependentReviewScoringTests.test_packet_hash_tampering_is_rejected) ... ok\ntest_participant_kit_excludes_keys (test_step19_tools.PilotMaterialsTests.test_participant_kit_excludes_keys) ... ok\ntest_planned_allocation_is_balanced_and_not_participant_data (test_step19_tools.PilotMaterialsTests.test_planned_allocation_is_balanced_and_not_participant_data) ... ok\ntest_two_task_sets_have_balanced_seeded_gaps_and_transfer_schemas (test_step19_tools.PilotMaterialsTests.test_two_task_sets_have_balanced_seeded_gaps_and_transfer_schemas) ... ok\ntest_paired_analysis_uses_consistent_direction (test_step19_tools.UserEvaluationAnalysisTests.test_paired_analysis_uses_consistent_direction) ... ok\ntest_same_task_set_for_both_workflows_is_reported_as_error (test_step19_tools.UserEvaluationAnalysisTests.test_same_task_set_for_both_workflows_is_reported_as_error) ... ok\n----------------------------------------------------------------------\nRan 8 tests in 0.096s\nOK"
-    },
-    {
-      "name": "frontend_dependency_install",
-      "command": [
-        "npm",
-        "ci",
-        "--no-audit",
-        "--no-fund"
-      ],
-      "status": "PASS",
-      "exit_code": 0,
-      "summary": "npm warn deprecated eslint@9.39.5: This version is no longer supported. Please see https://eslint.org/version-support for other options.",
-      "output_tail": "added 387 packages in 50s\nnpm warn deprecated eslint@9.39.5: This version is no longer supported. Please see https://eslint.org/version-support for other options."
-    },
-    {
-      "name": "frontend_typecheck",
-      "command": [
-        "npx",
-        "tsc",
-        "--noEmit"
-      ],
-      "status": "PASS",
-      "exit_code": 0,
-      "summary": "No output",
-      "output_tail": ""
-    },
-    {
-      "name": "frontend_lint",
-      "command": [
-        "npx",
-        "eslint",
-        "."
-      ],
-      "status": "PASS",
-      "exit_code": 0,
-      "summary": "✖ 2 problems (0 errors, 2 warnings)",
-      "output_tail": "/home/hatch/workspace/waterchain-step20/work/waterchain-step19/app/page.tsx\n142:9  warning  The 'evidenceRecords' logical expression could make the dependencies of useMemo Hook (at line 143) change on every render. To fix this, wrap the initialization of 'evidenceRecords' in its own useMemo() Hook  react-hooks/exhaustive-deps\n/home/hatch/workspace/waterchain-step20/work/waterchain-step19/components/temporal/TemporalEvidenceWorkbench.tsx\n61:78  warning  React Hook useEffect has a missing dependency: 'journeyModel'. Either include it or remove the dependency array. If 'setScope' needs the current value of 'journeyModel', you can also switch to useReducer instead of useState and read 'journeyModel' in the reducer  react-hooks/exhaustive-deps\n✖ 2 problems (0 errors, 2 warnings)"
-    },
-    {
-      "name": "frontend_production_build",
-      "command": [
-        "npm",
-        "run",
-        "build"
-      ],
-      "status": "PASS",
-      "exit_code": 0,
-      "summary": "ƒ  (Dynamic)  server-rendered on demand",
-      "output_tail": "Generating static pages (0/5) ...\nGenerating static pages (1/5)\nGenerating static pages (2/5)\nGenerating static pages (3/5)\n✓ Generating static pages (5/5)\nFinalizing page optimization ...\nCollecting build traces ...\nRoute (app)                                 Size  First Load JS\n┌ ○ /                                     107 kB         210 kB\n├ ○ /_not-found                            992 B         104 kB\n├ ƒ /api/diagnose                          123 B         103 kB\n└ ○ /icon.svg                                0 B            0 B\n+ First Load JS shared by all             103 kB\n├ chunks/255-b1e2483a7e02feee.js       46.6 kB\n├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB\n└ other shared chunks (total)           1.9 kB\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand"
+      "summary": "Ran 8 tests in 0.054s",
+      "output_tail": "----------------------------------------------------------------------\nRan 8 tests in 0.054s\nOK"
     }
   ],
   "sha256_files": {
@@ -307,7 +235,7 @@
     "validation/score_independent_review.py": "ef91e8b6512abc53bedec508b9d62d6ee04daff19e3716c65a2bb6d39a558aac",
     "validation/STEP12_CHANGELOG.md": "1f65e36ec16042200ed697a2ab8ecdd64a116c3500fe94cc605c5ec0dcabe400",
     "validation/STEP12_NOVELTY_AND_PRIOR_ART.md": "15ec5d266ea2f8a482e6907bd7b935af1b7a368f4a901fb42e208ab69157598a",
-    "validation/STEP12_VERIFICATION.md": "29a0a9f17b94d226c1e3a46ff83bb0a0c169b8fb83c68bdbe24f4bb7d6ae069c",
+    "validation/STEP12_VERIFICATION.md": "3c98a65fb0534a9a690ef788f3ab8aa7ed14a1f19d90f8b1f471815feda4c041",
     "validation/STEP17_CHANGELOG.md": "a9271432e3eb63c01c5b155e621809a65ea76b26806db1009e3adef8075a49a8",
     "validation/STEP17_INDEPENDENT_REVIEW.md": "9be571ee40afa4ce74800fd9a6bd91e0606f5d7e74580ce9ae144c1797095393",
     "validation/STEP17_READINESS.md": "206aa51973348ad29949b285dc22a9e77c083d52b57f033073f62bd7ddf97888",
@@ -317,7 +245,7 @@
     "validation/STEP19_EVIDENCE_SUMMARY.md": "88d4a66b43143191ece6e029c11d094b2aa5920c880190ad6e3116840bfdfd99",
     "validation/STEP19_EXECUTION_REPORT.md": "9dbf1d57a7a80cce11ca28db31829298bd4906ad594fd21818c95544c6c7f45f",
     "validation/STEP19_PROJECT_REPORT.md": "562a0baad2c6a9aa0382738b04d5be50aa6f019f235f4db7298ac9c85b66b940",
-    "validation/STEP19_READINESS_AND_SCORECARD.md": "536f63c9c5099310a1449c2c3cc2525586e2567e5b72250564799ad4553fd388",
+    "validation/STEP19_READINESS_AND_SCORECARD.md": "bb1a2a2d08f06454ba93a73919964202f37dbefc6396c0bc7f6f9c50e7fa29f2",
     "validation/STEP20_ABSTRACT.md": "295ddc8edbe75660c3426c4dbff904eac776ab7a8985e1ce9ca845fc60d7727f",
     "validation/STEP20_DEMO_SCRIPT.md": "1079fa1d868bbe01d8f28776fc0005363c5e550c977d46d936c824cf06104c89",
     "validation/STEP20_EVIDENCE_SUMMARY.md": "9e55839fc345f84cb961b5b809d4139b86f2d210f44f6deeb2aee233ce47dc91",
@@ -371,5 +299,13 @@
     "The private comparison key and reviewer results remain in browser localStorage. They are not protected by authenticated access controls and can be lost or modified if the browser profile is cleared or tampered with.",
     "Review CSV imports are bound to a packet ID, validate record aliases, require a pseudonymous reviewer code, role, ISO date and rationale; this reduces accidental mismatch but is not cryptographic reviewer authentication."
   ],
-  "archive_note": "Documentation organization only: historical reports moved to docs/history; checks and fixture results remain scoped as stated above. The current main CI run is the authoritative signal for the checked revision."
+  "archive_note": "Documentation cleanup: 33 historical root reports moved to docs/history; historic files are preserved. Hashes are aligned to the current declared input list. The overall CI workflow currently passes; Playwright E2E remains outside this workflow.",
+  "verification_source": {
+    "provider": "GitHub Actions",
+    "run_id": 40901121415,
+    "run_url": "https://github.com/Rubai106/WaterChain/actions/runs/40901121415",
+    "python_job": "success",
+    "frontend_job": "success",
+    "note": "Both jobs passed on the pre-manifest-sync cleanup revision. The manifest-sync commit changes only this report; CI reruns on the resulting PR revision."
+  }
 }
