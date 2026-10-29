@@ -35,6 +35,10 @@ jobs:
           node-version: '22'
       - name: Install frontend dependencies
         run: npm install --no-audit --no-fund
+      - name: Independent-review unit tests
+        run: npm run test:independent-review
+      - name: TypeScript syntax check
+        run: npm run check:ts-syntax
       - name: TypeScript typecheck
         run: npm run typecheck
       - name: ESLint
