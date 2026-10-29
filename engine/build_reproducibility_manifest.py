@@ -18,7 +18,7 @@ CHECKS = [
     ("step19_validation_tools", [sys.executable, "-m", "unittest", "discover", "-s", "validation", "-p", "test_*.py", "-v"]),
 ]
 INPUTS = [
-    "README.md", "package.json", "package-lock.json", "docs/history/STEP19_CHANGELOG.md", "docs/history/STEP12_PRODUCT_FOUNDATION.md",
+    "README.md", "docs/history/README.md", "package.json", "package-lock.json", "docs/history/STEP19_CHANGELOG.md", "docs/history/STEP12_PRODUCT_FOUNDATION.md",
     "STARTUP_GUIDE.md", "docs/history/TEST_REPORT.md", "docs/history/BROWSER_TEST_REPORT.md",
     "docs/history/BUG_FIX_SUMMARY.md", "docs/history/BUG_FIX_SUMMARY_STEP10.md", "docs/history/BUG_FIX_SUMMARY_STEP11.md",
     "JUDGE_DEMO_CHECKLIST.md", "docs/history/READINESS_ASSESSMENT.md", "DESIGN_SYSTEM.md",
